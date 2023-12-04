@@ -6,7 +6,7 @@ export default class Contacto {
   #telefono;
 
   constructor(nombre, apellido, email, telefono) {
-    this.#id = crypto.randomUUID() ;
+    this.#id = crypto.randomUUID();
     this.#nombre = nombre;
     this.#apellido = apellido;
     this.#email = email;
@@ -47,5 +47,15 @@ export default class Contacto {
 
   set telefono(nuevoTelefono) {
     this.#telefono = nuevoTelefono;
+  }
+
+  toJSON() {
+    return {
+      nombre: this.nombre,
+      apellido: this.apellido,
+      id: this.id,
+      email: this.email,
+      telefono: this.telefono,
+    };
   }
 }
