@@ -44,7 +44,7 @@ const dibujarFila = (contacto, numeroFila)=>{
   <td>${contacto.email}</td>
   <td>${contacto.telefono}</td>
   <td>
-    <a class="btn btn-primary" href="./pages/detalleContacto.html">Ver mas</a>
+    <buttom class="btn btn-primary" href="./pages/detalleContacto.html">Ver mas</buttom>
     <button class="btn btn-warning">Editar</button>
     <button class="btn btn-danger" onclick="borrarContacto(`${contacto.id}`)">Borrar</button>
   </td>
