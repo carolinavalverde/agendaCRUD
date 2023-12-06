@@ -44,9 +44,9 @@ const dibujarFila = (contacto, numeroFila)=>{
   <td>${contacto.email}</td>
   <td>${contacto.telefono}</td>
   <td>
-    <buttom class="btn btn-primary" href="./pages/detalleContacto.html">Ver mas</buttom>
+    <a class="btn btn-primary" href="./pages/detalleContacto.html">Ver mas</a>
     <button class="btn btn-warning">Editar</button>
-    <button class="btn btn-danger" onclick="borrarContacto(`${contacto.id}`)">Borrar</button>
+    <button class="btn btn-danger" onclick="borrarContacto('${contacto.id}')">Borrar</button>
   </td>
 </tr>`
 }
@@ -60,19 +60,17 @@ const cargaInicial = () =>{
 
 window.borrarContacto =(idContacto)=>{
   console.log(idContacto);
-  //buscar  la posicion del elem en el array findIndex
-const posicionContactoBuscado = agenda.findIndex((itemContacto)=> itemContacto.id === idContacto );
-console.log(posicionContactoBuscado);
-
-  //borrar el contacto de la agenda usando splice(posicion, cant de elem a borrar)
-agenda.splice(posicionContactoBuscado, 1);
-
-  //actualizar el localstorage 
-guardarEnLocalstorage();
+ //buscar la posicion del elemento en el array findIndex
+ const posicionContactoBuscado = agenda.findIndex((itemContacto) => itemContacto.id === idContacto );
+ console.log(posicionContactoBuscado);
+  //borrar el contacto de la agenda usando splice(posicion, cant de elementos a borrar)
+  agenda.splice(posicionContactoBuscado, 1)
+  //actualizar localstorage
+  guardarEnLocalstorage()
   //borrar la fila de la tabla
-const tablaContactos = document.getElementById(`tablaContacto`);
-tablaContactos.innerHTML = ``;
-cargaInicial();
+  const tablaContactos = document.getElementById('tablaContacto');
+  tablaContactos.innerHTML = '';
+  cargaInicial();
 }
 
 //resto de la logica
