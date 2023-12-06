@@ -8,7 +8,7 @@ const nombre = document.querySelector("#nombre"),
   apellido = document.querySelector("#apellido"),
   email = document.querySelector("#email"),
   telefono = document.querySelector("#telefono");
-const agenda = JSON.parse(localStorage.getItem(`agendaKey`)) ||  [];
+const agenda = JSON.parse(localStorage.getItem(`agendaKey`)) || [];
 
 //funciones
 const crearContacto = (e) => {
@@ -40,5 +40,30 @@ const guardarEnLocalstorage = () => {
   localStorage.setItem("agendaKey", JSON.stringify(agenda));
 };
 
+const dibujarFila = () => {
+  const tablaContactos = document.getElementById(`tablaContacto`);
+  tablaContactos.innerHTML += `<tr>
+  <th scope="row">1</th>
+  <td>${contacto.nombre}</td>
+  <td>${contacto.apellido}</td>
+  <td>${contacto.mail}</td>
+  <td>${contacto.telefono}</td>
+  <td>
+    <a class="btn btn-primary" href="./pages/detalleContacto.html">Ver mas</a>
+    <button class="btn btn-warning">Editar</button>
+    <button class="btn btn-danger">Borrar</button>
+  </td>
+</tr>`;
+};
+
+const cargaInicial = () => {
+  //preguntar si la agenda tiene elementos
+  if(agenda.length > 0){
+    agenda.map((itemContacto)=> dibujarFila(itemContacto))
+  }
+}
+
 //resto de la logica
 formularioContacto.addEventListener("submit", crearContacto);
+
+cargaInicial();
